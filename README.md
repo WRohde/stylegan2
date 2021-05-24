@@ -12,7 +12,7 @@
 > source stylegan_env/bin/activate   
 >
 > pip install -r requirements.txt 
-* Download the assorted.rar dataset from here https://drive.google.com/drive/folders/1ioj2NMKoQbucokSUt2Z_5vi-M2-n6E8H?fbclid=IwAR3xtUqGtuf5C2XMjWPYkLJbqT1KsI64bI1Z7PC59UPYuyLcNu_vliFXK3w
+* Download the assorted.rar dataset 
 * add to wsl (I'm sure you have your ways, but I had to google this: launch wsl then run explorer.exe . to get a windows explorer in ubuntu)
 * extract assorted.rar to stylegan2/assorted
 >  mkdir data 
