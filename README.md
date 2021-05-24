@@ -19,7 +19,7 @@
 * data and results should be subdirectories of stylegan2
 
 ### test that cuda is running correctly
-> nvcc /notebooks/stylegan2/test_nvcc.cu -o test_nvcc -run
+> nvcc test_nvcc.cu -o test_nvcc -run
 >
 > CPU says hello.
 >
