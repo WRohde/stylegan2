@@ -1,3 +1,45 @@
+## Cangan quickstart readme.
+
+### CUDA install
+* Requires Cuda 10
+* follow this: guide https://docs.nvidia.com/cuda/wsl-user-guide/index.html but change apt-get install -y cuda-toolkit-11-0 to 
+> apt-get install -y cuda-toolkit-10-0
+
+### stylegan2 install
+* make a pip env 
+> virtualenv -p python3.7 stylegan_env 
+>
+> pip install -r requirements.txt 
+* Download the assorted.rar dataset from here https://drive.google.com/drive/folders/1ioj2NMKoQbucokSUt2Z_5vi-M2-n6E8H?fbclid=IwAR3xtUqGtuf5C2XMjWPYkLJbqT1KsI64bI1Z7PC59UPYuyLcNu_vliFXK3w
+* add to wsl (I'm sure you have your ways, but I had to google this: launch wsl then run explorer.exe . to get a windows explorer in ubuntu)
+* extract assorted.rar to stylegan2/assorted
+>  mkdir data 
+>
+> mkdir results 
+* data and results should be subdirectories of stylegan2
+
+### test that cuda is running correctly
+> nvcc /notebooks/stylegan2/test_nvcc.cu -o test_nvcc -run
+>
+> CPU says hello.
+>
+>GPU says hello.
+
+### prepare the dataset (one time thing)
+> python dataset_tool.py create_from_images data/cans assorted
+
+### train the dataset
+> python run_training.py --data-dir=data --config=config-f --dataset=cans --mirror-augment=true --metrics='fid10k'
+
+### resuming training
+* find the latest network snapshot pkl in results
+* in stylegan2/training/training_loop put the snapshot pkl filepath as the value for resume_pkl in training_loop dict. Put resume_kimg to approximately the correct kimg (the snapshot suffix should be the kimg)
+> python run_training.py --data-dir=data --config=config-f --dataset=cans --mirror-augment=true --metrics='fid10k'
+
+
+---
+
+# From here on is the StyleGan2 Readme
 ## StyleGAN2 &mdash; Official TensorFlow Implementation
 
 ![Teaser image](./docs/stylegan2-teaser-1024x256.png)
